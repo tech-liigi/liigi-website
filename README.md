@@ -1,1 +1,1 @@
-# ligii-website
+# liigi-website
