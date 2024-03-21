@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   icons: {
     icon: "/LiiGi.jpg"
   },
+  openGraph: {
+    title: 'LiiGi Football News, Fixtures, Scores & Results',
+    description: "For all the latest LiiGi news, visit the official website of the LiiGi.",
+    images:["/LiiGi.jpg"]
+  },
 };
 export default function RootLayout({
   children,

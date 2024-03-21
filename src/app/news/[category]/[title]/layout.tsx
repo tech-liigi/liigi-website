@@ -13,10 +13,15 @@ export async function generateMetadata(
     const title = params.title;
 
     return {
-        title: `LiiGi News/${category.charAt(0).toUpperCase() + category.slice(1, category.length)}/${title}`,
+        title: `LiiGi News & ${category.charAt(0).toUpperCase() + category.slice(1, category.length)} & ${title}`,
         description: "For all the latest LiiGi news, visit the official website of the LiiGi.",
         icons: {
             icon: "/LiiGi.jpg"
+        },
+        openGraph: {
+            title: `LiiGi News & ${category.charAt(0).toUpperCase() + category.slice(1, category.length)} & ${title}`,
+            description: "For all the latest LiiGi news, visit the official website of the LiiGi.",
+            images:["/LiiGi.jpg"]
         },
     }
 }
@@ -25,6 +30,7 @@ export default function Page({
                                    }: Readonly<{
     children: React.ReactNode;
 }>) {
+
     return (
         <html lang="en">
         <body className={roboto.className}>{children}</body>

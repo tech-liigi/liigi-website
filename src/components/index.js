@@ -5,6 +5,7 @@ import Footer from "./Footer"
 import Player from "./Player"
 import Social from "./Social"
 import Loader from "./Loader"
+import {TracingBeam} from "./TracingBeam"
 export  {
     Header,
     Carousel,
@@ -12,5 +13,6 @@ export  {
     Footer,
     Player,
     Social,
-    Loader
+    Loader,
+    TracingBeam
 }

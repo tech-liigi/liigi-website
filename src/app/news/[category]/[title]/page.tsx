@@ -1,12 +1,33 @@
-import { Header, Footer, Social } from "@/components"
+import { Header, Footer, Social, TracingBeam } from "@/components"
 import {kanit, kanit_bold, rowdies, montserrat, inter,montserrat_italic} from "@/fonts"
 import Image from "next/image"
-import Link from "next/link"
+// import Link from "next/link"
 import React from "react";
 
 export default function Article({params}:{params:{title:string, category:string}}){
+    const jsonLd = {
+        '@context': 'https://liigi.com',
+        '@type': 'BlogPosting',
+        headline: params.title,
+        image: '/Liigi.jpg',
+        description: 'Description of the blog post',
+        author: {
+            '@type': 'Person',
+            name: 'John Doe',
+        },
+        datePublished: 'Publication date of the blog post in ISO 8601 format',
+        dateModified: 'Last modification date of the blog post in ISO 8601 format',
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': typeof window !== "undefined" ? window.location.href : "",
+        },
+    }
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header els={[{name:"Preview", href:"preview"}, {name:"Share", href:"share"}, {name:"Sponsors", href:"footer"}]}/>
                 <main className="mt-[200px] mb-[100px] w-full flex flex-col">
                     <div className="flex flex-col justify-center items-start sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] m-auto">
@@ -31,6 +52,7 @@ export default function Article({params}:{params:{title:string, category:string}
                     <a  id={"preview"} target={"_blank"}>
                     <Image className="m-auto" src="/example.jpg" alt="preview" title={"Title"} width={1300} height={1300} quality={100}/>
                     </a>
+                    <TracingBeam className="sm:hidden md:block lg:block xl:block">
                         <div  className="flex flex-col sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] m-auto my-10">
                  <h2 className={`${kanit_bold.className} text-4xl py-2`}>Introduction</h2>  {/* difference will be in font size*/}
                  <p className={`py-3 text-md `}>Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.</p>
@@ -56,7 +78,35 @@ export default function Article({params}:{params:{title:string, category:string}
                  <p className={`py-3 text-md`}>Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.</p>
                  <a className={`underline text-secondary ${rowdies.className}`} href={"#"}>Link</a>
              </div>
-            <p  className="text-center font-bold text-lg my-5">Read More</p>
+                    </TracingBeam>
+<div className="sm:block md:hidden lg:hidden xl:hidden">
+    <div  className="flex flex-col sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] m-auto my-10">
+        <h2 className={`${kanit_bold.className} text-4xl py-2`}>Introduction</h2>  {/* difference will be in font size*/}
+        <p className={`py-3 text-md `}>Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.</p>
+        <p className={`py-3 text-md`}>Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.</p>
+        <figure className="my-4">
+            <a href={'#'} target={"_blank"}>
+                <Image className="m-auto cursor-pointer my-2" src="/example.jpg" alt="preview" title={"Title"} width={800} height={800} />
+            </a>
+            <div className="flex items-center mt-3">
+                <div className="w-[2.5px] h-5 bg-black mr-2"/>
+                <figcaption className={`${inter.className} text-sm`}>Image caption goes here</figcaption>
+            </div>
+        </figure>
+        <p className={`py-3 text-md font-bold`}>Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. Tempor integer aliquam in vitae malesuada fringilla.</p>
+        <p className={`py-3 text-md`}>Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis risus. Sed condimentum enim dignissim adipiscing faucibus consequat, urna. Viverra purus et erat auctor aliquam. Risus, volutpat vulputate posuere purus sit congue convallis aliquet. Arcu id augue ut feugiat donec porttitor neque. Mauris, neque ultricies eu vestibulum, bibendum quam lorem id. Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.</p>
+        <blockquote>
+            <p className={`${montserrat_italic.className} flex-1 `}>"Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque congue eget consectetur turpis. Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean tempus."</p>
+            <span>Don</span>
+        </blockquote>
+        <p className={`py-3 text-md`}>Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.</p>
+        <h3 className={`${kanit_bold.className} text-3xl py-2`}>Conclusion</h3>  {/* difference will be in font size*/}
+        <p className={`py-3 text-md`}>Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis risus. Sed condimentum enim dignissim adipiscing faucibus consequat, urna. Viverra purus et erat auctor aliquam. Risus, volutpat vulputate posuere purus sit congue convallis aliquet. Arcu id augue ut feugiat donec porttitor neque. Mauris, neque ultricies eu vestibulum, bibendum quam lorem id. Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.</p>
+        <p className={`py-3 text-md`}>Mi tincidunt elit, id quisque ligula ac diam, amet. Vel etiam suspendisse morbi eleifend faucibus eget vestibulum felis. Dictum quis montes, sit sit. Tellus aliquam enim urna, etiam. Mauris posuere vulputate arcu amet, vitae nisi, tellus tincidunt. At feugiat sapien varius id.</p>
+        <a className={`underline text-secondary ${rowdies.className}`} href={"#"}>Link</a>
+    </div>
+</div>
+                    <p  className="text-center font-bold text-lg my-5">Read More</p>
                     <div id={'share'} className="flex justify-center items-center">
                        <Social/>
                     </div>

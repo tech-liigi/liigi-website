@@ -4,8 +4,29 @@ import Image from "next/image"
 import React from "react";
 
 export default function Video({params}:{params:{title:string, category:string}}){
+    const jsonLd = {
+        '@context': 'https://liigi.com',
+        '@type': 'BlogPosting',
+        headline: params.title,
+        image: '/Liigi.jpg',
+        description: 'Description of the video',
+        author: {
+            '@type': 'Person',
+            name: 'John Doe',
+        },
+        datePublished: 'Publication date of the blog post in ISO 8601 format',
+        dateModified: 'Last modification date of the blog post in ISO 8601 format',
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': typeof window !== "undefined" ? window.location.href : "",
+        },
+    }
     return(
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header els={[{name:"Preview", href:"preview"}, {name:"Sponsors", href:"footer"}]}/>
             <main className="my-[200px] h-full w-full">
                 <div id={"preview"} className="sm:w-full lg:items-center md:items-center sm:items-start xl:items-center md:w-[98%] lg:w-[90%] xl:w-[90%] mx-auto max-[570px]:h-[55vh] h-[75vh] lg:h-[40vh] md:h-[40vh] xl:h-[40vh] flex xl:flex-row lg:flex-row md:flex-row sm:flex-col sm:px-0 lg:px-5 md:px-5 xl:px-5 my-10">
