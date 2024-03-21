@@ -332,14 +332,16 @@ const Header = (props:
     {
         els: Array<El>
     })=> {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 950);
+    const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 950);
     const [prevScrollY, setPrevScrollY] = useState(0);
     const [active, setActive] = useState(false);
     const headerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         function handleResize() {
-            setIsMobile(window.innerWidth < 950);
+            if(typeof window !== "undefined") {
+                setIsMobile(window.innerWidth < 950);
+            }
         }
         function debounce(func: Function, delay: number) {
             let timeoutId: NodeJS.Timeout;
@@ -351,6 +353,7 @@ const Header = (props:
             };
         }
         function handleScroll() {
+            if(typeof window !== "undefined") {
                 const currentScrollY = window.scrollY;
                 if (!isMobile) {
                     if (currentScrollY > prevScrollY && currentScrollY > 350) { // Adjust the scroll position threshold as needed
@@ -361,37 +364,38 @@ const Header = (props:
                             className: "fixed w-full z-10 max-h-[180px] drop-shadow-md"
                         });
                         setActive(true);
-                        gsap.to("#logo",{
-                            scale:"1",
+                        gsap.to("#logo", {
+                            scale: "1",
                             duration: 0.1,
                             ease: "power1.in",
-                            width:80,
-                            height:80
+                            width: 80,
+                            height: 80
                         })
-                    } else if(currentScrollY < prevScrollY || currentScrollY <= 350) {
+                    } else if (currentScrollY < prevScrollY || currentScrollY <= 350) {
                         gsap.to("#header", {
                             y: 0,
                             duration: 0.2,
                             ease: "power1.inOut",
                             className: "w-full absolute z-10 max-h-[180px]"
                         });
-                        gsap.to("#logo",{
+                        gsap.to("#logo", {
                             duration: 0.2,
                             ease: "power1.out",
-                            scale:"1.25",
-                            width:100,
-                            height:100
+                            scale: "1.25",
+                            width: 100,
+                            height: 100
                         })
                         setActive(false);
                     }
                     setPrevScrollY(currentScrollY);
                 }
-
+            }
         }
         const debouncedHandleScroll = debounce(handleScroll, 100);
-        window.addEventListener('scroll', debouncedHandleScroll);
-        window.addEventListener('resize', handleResize);
-
+        if(typeof window !== "undefined") {
+            window.addEventListener('scroll', debouncedHandleScroll);
+            window.addEventListener('resize', handleResize);
+        }
         // Cleanup function to remove the event listener when the component unmounts
         return () => {
             window.removeEventListener('resize', handleResize);
