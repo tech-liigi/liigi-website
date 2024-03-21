@@ -122,7 +122,7 @@ export default function Home() {
             </section>
             <section className="py-3">
                 <p className="text-center text-lg font-semibold py-5">Official Sponsors of the Liigi</p>
-                <Carousel responsive={responsive} arrowsDesktop={false} itemClass={"running-line-animation sponsor"}>
+                <Carousel responsive={responsive} containerClassName={"carousel-container"} arrowsDesktop={false} itemClass={"running-line-animation sponsor"}>
                     <div className="flex justify-center items-center">
                         <Image src={"/sponsor_1.svg"} width={100} height={100} alt={'sponsor-1'} title={"Sponsor"}/>
                     </div>
