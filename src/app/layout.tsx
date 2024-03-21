@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'LiiGi Football News, Fixtures, Scores & Results',
     description: "For all the latest LiiGi news, visit the official website of the LiiGi.",
-    images:["/LiiGi.jpg"]
+    images: ["/LiiGi.jpg"]
   },
 };
 export default function RootLayout({
