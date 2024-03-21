@@ -8,7 +8,7 @@ export default function Video({params}:{params:{title:string, category:string}})
         <>
             <Header els={[{name:"Preview", href:"preview"}, {name:"Sponsors", href:"footer"}]}/>
             <main className="my-[200px] h-full w-full">
-                <div id={"preview"} className="sm:w-full lg:items-center md:items-center sm:items-start xl:items-center md:w-[95%] lg:w-[90%] xl:w-[90%] mx-auto max-[570px]:h-[55vh] h-[75vh] lg:h-[40vh] md:h-[40vh] xl:h-[40vh] flex xl:flex-row lg:flex-row md:flex-row sm:flex-col px-5 my-10">
+                <div id={"preview"} className="sm:w-full lg:items-center md:items-center sm:items-start xl:items-center md:w-[98%] lg:w-[90%] xl:w-[90%] mx-auto max-[570px]:h-[55vh] h-[75vh] lg:h-[40vh] md:h-[40vh] xl:h-[40vh] flex xl:flex-row lg:flex-row md:flex-row sm:flex-col px-5 my-10">
                     <div className="flex flex-col justify-center items-start sm:w-[90%] md:w-[70%] lg:w-[60%] xl:w-[50%] sm:px-2 md:px-10 lg:px-10 xl:px-10 m-auto">
                         <div className="flex-row flex">
                             <p className="pr-2">Video</p>

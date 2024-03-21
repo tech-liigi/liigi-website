@@ -104,17 +104,17 @@ const TopHeader = () =>{
                 <a href={'#'} target={"_blank"} rel={"noopener"}>
                     <Image  className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Agege_FC_Logo.png"} alt={"Agege_Logo"} title={"Agege FC"}  width={50} height={50}/>
                 </a>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Apapa_FC_Logo.png"} alt={"Apapa_Logo"} title={"Apapa FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikeja_FC_Logo.png"} alt={"Ikeja_Logo"} title={"Ikeja FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikorodu_FC_Logo.png"} alt={"Ikorodu_Logo"} title={"Ikorodu FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikoyi_FC_Logo.png"} alt={"Ikoyi_Logo"} title={"Ikoyi FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Kosofe_FC_Logo.png"} alt={"Kosofe_Logo"} title={"Kosofe FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Lekki_FC_Logo.png"} alt={"Lekki_Logo"} title={"Lekki FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Mushin_FC_Logo.png"} alt={"Mushin_Logo"} title={"Mushin FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ojo_FC_Logo.png"} alt={"Ojo_Logo"} title={"Ojo FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ondo_FC_Logo.png"} alt={"Ondo_Logo"} title={"Ondo FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshodi_FC_Logo.png"} alt={"Oshodi_Logo"} title={"Oshodi FC"} width={50} height={50}/>
-                <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshogbo_FC_Logo.png"} alt={"Oshogbo_Logo"} title={"Osogbo FC"} width={50} height={50}/>
+                <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Apapa_FC_Logo.png"} alt={"Apapa_Logo"} title={"Apapa FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikeja_FC_Logo.png"} alt={"Ikeja_Logo"} title={"Ikeja FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikorodu_FC_Logo.png"} alt={"Ikorodu_Logo"} title={"Ikorodu FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikoyi_FC_Logo.png"} alt={"Ikoyi_Logo"} title={"Ikoyi FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Kosofe_FC_Logo.png"} alt={"Kosofe_Logo"} title={"Kosofe FC"} width={50} height={50}/>
+                <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Lekki_FC_Logo.png"} alt={"Lekki_Logo"} title={"Lekki FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Mushin_FC_Logo.png"} alt={"Mushin_Logo"} title={"Mushin FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ojo_FC_Logo.png"} alt={"Ojo_Logo"} title={"Ojo FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ondo_FC_Logo.png"} alt={"Ondo_Logo"} title={"Ondo FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshodi_FC_Logo.png"} alt={"Oshodi_Logo"} title={"Oshodi FC"} width={50} height={50}/>
+                <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshogbo_FC_Logo.png"} alt={"Oshogbo_Logo"} title={"Osogbo FC"} width={50} height={50}/>
             </div>
         </section>
     )
@@ -150,6 +150,7 @@ const MainHeader = ({ paddingResize }: any) => {
                     height={100}
                     onMouseEnter={handleMouseEnter}
                     quality={100}
+                    loading={"lazy"}
                 />
                 </Link>
                 <nav>
@@ -164,40 +165,40 @@ const MainHeader = ({ paddingResize }: any) => {
                         >
                                 <div className="grid grid-cols-6 gap-4 space-y-4 text-sm z-10">
                                     <div className="flex col-span-1 mt-4 items-center justify-center flex-col">
-                                        <Image src={"/Agege_FC_Logo.png"} alt={"Agege_LoGo"} width={50} height={50} />
+                                        <Image loading={"lazy"} src={"/Agege_FC_Logo.png"} alt={"Agege_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Agege</HoveredLink>
                                     </div> <div className="flex col-span-1 mt-4 items-center justify-center flex-col">
-                                        <Image src={"/Apapa_FC_Logo.png"} alt={"Apapa_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Apapa_FC_Logo.png"} alt={"Apapa_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Apapa</HoveredLink>
                                     </div> <div className="flex col-span-1 items-center justify-center flex-col">
-                                        <Image src={"/Ikeja_FC_Logo.png"} alt={"Ikeja_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Ikeja_FC_Logo.png"} alt={"Ikeja_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Ikeja</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Ikorodu_FC_Logo.png"} alt={"Ikorodu_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Ikorodu_FC_Logo.png"} alt={"Ikorodu_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Ikorodu</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Ikoyi_FC_Logo.png"} alt={"Ikoyi_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Ikoyi_FC_Logo.png"} alt={"Ikoyi_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Ikoyi</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Kosofe_FC_Logo.png"} alt={"Kosofe_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Kosofe_FC_Logo.png"} alt={"Kosofe_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Kosofe</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Lekki_FC_Logo.png"} alt={"Lekki_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Lekki_FC_Logo.png"} alt={"Lekki_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Lekki</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Mushin_FC_Logo.png"} alt={"Mushin_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Mushin_FC_Logo.png"} alt={"Mushin_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Mushin</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Ojo_FC_Logo.png"} alt={"Ojo_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Ojo_FC_Logo.png"} alt={"Ojo_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Ojo</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Ondo_FC_Logo.png"} alt={"Ondo_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Ondo_FC_Logo.png"} alt={"Ondo_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Ondo</HoveredLink>
                                     </div> <div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Oshodi_FC_Logo.png"} alt={"Oshodi_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Oshodi_FC_Logo.png"} alt={"Oshodi_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Oshodi</HoveredLink>
                                     </div><div className="flex col-span-1 m-0 items-center justify-center flex-col">
-                                        <Image src={"/Oshogbo_FC_Logo.png"} alt={"Oshogbo_LoGo"} width={50} height={50} />
+                                        <Image  loading={"lazy"} src={"/Oshogbo_FC_Logo.png"} alt={"Oshogbo_LoGo"} width={50} height={50} />
                                        <HoveredLink href="#">Oshogbo</HoveredLink>
                                     </div>
                                 </div>
@@ -255,7 +256,7 @@ const MobileMainHeader = () => {
         <section className={`flex flex-col justify-start items-center w-full max-h-screen ${open ? 'overflow-y-auto' : 'overflow-y-hidden'}`}>
             <div className="w-full flex justify-between bg-black px-10 relative">
                 <Link href={"/"}>
-                <Image className='scale-105' src={"/LiiGi.jpg"} alt={'LiiGi_Logo'} title={"LiiGi"} width={80} height={80} quality={100}/>
+                <Image  loading={"lazy"} className='scale-105' src={"/LiiGi.jpg"} alt={'LiiGi_Logo'} title={"LiiGi"} width={80} height={80} quality={100}/>
                 </Link>
                 {!open &&<Image onClick={()=>isOpen(true)} src='/bars-icon.svg' alt='bars-icon' width={30} height={30}/>}
                 {open&&<Image onClick={()=>isOpen(false)} src='/cross-icon.svg' alt='cross-icon' width={30} height={30}/>}
@@ -277,17 +278,17 @@ const MobileMainHeader = () => {
                                     <a href={'#'} target={"_blank"} rel={"noopener"}>
                                         <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Agege_FC_Logo.png"} alt={"Agege_Logo"} title={"Agege FC"}  width={100} height={100}/>
                                     </a>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Apapa_FC_Logo.png"} alt={"Apapa_Logo"} title={"Apapa FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikeja_FC_Logo.png"} alt={"Ikeja_Logo"} title={"Ikeja FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikorodu_FC_Logo.png"} alt={"Ikorodu_Logo"} title={"Ikorodu FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikoyi_FC_Logo.png"} alt={"Ikoyi_Logo"} title={"Ikoyi FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Kosofe_FC_Logo.png"} alt={"Kosofe_Logo"} title={"Kosofe FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Lekki_FC_Logo.png"} alt={"Lekki_Logo"} title={"Lekki FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Mushin_FC_Logo.png"} alt={"Mushin_Logo"} title={"Mushin FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ojo_FC_Logo.png"} alt={"Ojo_Logo"} title={"Ojo FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ondo_FC_Logo.png"} alt={"Ondo_Logo"} title={"Ondo FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshodi_FC_Logo.png"} alt={"Oshodi_Logo"} title={"Oshodi FC"} width={100} height={100}/>
-                                    <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshogbo_FC_Logo.png"} alt={"Oshogbo_Logo"} title={"Osogbo FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Apapa_FC_Logo.png"} alt={"Apapa_Logo"} title={"Apapa FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikeja_FC_Logo.png"} alt={"Ikeja_Logo"} title={"Ikeja FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikorodu_FC_Logo.png"} alt={"Ikorodu_Logo"} title={"Ikorodu FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ikoyi_FC_Logo.png"} alt={"Ikoyi_Logo"} title={"Ikoyi FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Kosofe_FC_Logo.png"} alt={"Kosofe_Logo"} title={"Kosofe FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Lekki_FC_Logo.png"} alt={"Lekki_Logo"} title={"Lekki FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Mushin_FC_Logo.png"} alt={"Mushin_Logo"} title={"Mushin FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ojo_FC_Logo.png"} alt={"Ojo_Logo"} title={"Ojo FC"} width={100} height={100}/>
+                                    <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Ondo_FC_Logo.png"} alt={"Ondo_Logo"} title={"Ondo FC"} width={100} height={100}/>
+                                    <Image loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshodi_FC_Logo.png"} alt={"Oshodi_Logo"} title={"Oshodi FC"} width={100} height={100}/>
+                                    <Image  loading={"lazy"} className="cursor-pointer duration-[0.1s] hover:scale-125" src={"/Oshogbo_FC_Logo.png"} alt={"Oshogbo_Logo"} title={"Osogbo FC"} width={100} height={100}/>
                                 </div>
                             </div>
                         </details>
@@ -408,7 +409,12 @@ const Header = (props:
     return (
         // fixed here
         <header>
-            {!isMobile ? <><TopHeader/><div ref={headerRef} className="w-full z-10 absolute max-h-[180px]" id="header"><MainHeader paddingResize={active}/><SubHeader els={props.els}/></div></> : <div id="header" className='w-full fixed top-0 z-10 drop-shadow-md'><MobileMainHeader/><SubHeader els={props.els}/></div>}
+            <div className={"sm:block md:block lg:hidden xl:hidden"}>
+                <div id="header" className='w-full fixed top-0 z-10 drop-shadow-md'><MobileMainHeader/><SubHeader els={props.els}/></div>
+            </div>
+            <div className={"sm:hidden md:hidden lg:block xl:block"}>
+            <><TopHeader/><div ref={headerRef} className="w-full z-10 absolute max-h-[180px]" id="header"><MainHeader paddingResize={active}/><SubHeader els={props.els}/></div></>
+            </div>
         </header>
     )
 }

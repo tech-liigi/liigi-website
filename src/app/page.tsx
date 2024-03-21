@@ -1,6 +1,10 @@
-import { Header, Carousel, NewsList, Footer } from "../components"
+import { Carousel, NewsList, Footer } from "../components"
 import Image from "next/image"
+import dynamic from 'next/dynamic';
 
+const Header = dynamic(() => import('../components/Header'), {
+    ssr: true
+});
 // import Link from "next/link"
 import {kanit, kanit_bold, rowdies, montserrat, inter} from "../fonts"
 
