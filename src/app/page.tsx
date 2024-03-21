@@ -29,7 +29,7 @@ export default function Home() {
         <Header els={[{name:"Main", href:"banner"}, {name:"News", href:"news"}, {name:"Video", href:"video"}, {name:"Sponsors", href:"footer"}]}/>
         <main>
             <div className="mt-[160px]"/>
-      <section id="main" className="sm:p-0 md:px-5 md:py-5 lg:px-5 lg:py-5 xl:px-5 xl:py-5 w-full bg-[url('/organic_bg.jpg')] bg-no-repeat object-cover h-full">
+      <section id="banner" className="sm:p-0 md:px-5 md:py-5 lg:px-5 lg:py-5 xl:px-5 xl:py-5 w-full bg-[url('/organic_bg.jpg')] bg-no-repeat object-cover h-full">
       <div className="grid sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 lg:grid-cols-4 gap-4 h-full">
           {/* Big element */}
           <div className="col-span-2 z-0 sm:border-0 sm:rounded-none sm:w-full bg-white rounded-[4px] border-[1px] border-black group h-full">

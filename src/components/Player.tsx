@@ -1,7 +1,14 @@
 'use client'
 import ReactPlayer from "react-player";
 import { RotatingLines } from 'react-loader-spinner'
+import {useState,useEffect} from "react";
 const Player = () => {
+    const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 950);
+    useEffect(() => {
+        if(typeof window !== "undefined") {
+            setIsMobile(window.innerWidth < 950);
+        }
+    }, [isMobile]);
     return (
         <div className="video_container w-full h-full">
             <div className="max-w-3xl min-[1980px]:max-w-5xl mx-auto h-full">
@@ -10,7 +17,7 @@ const Player = () => {
                         className="player hover:drop-shadow-2xl duration-[0.2s]"
                         url="https://streamable.com/0rbor3"
                         width="100%"
-                        controls={true}
+                        controls
                         height="100%"
                         fallback={<div className="bg-black w-full h-full flex justify-center items-center">
                             <RotatingLines
@@ -35,7 +42,7 @@ const Player = () => {
                         }
                         light={"/example.jpg"} // if not light mode, the playing is false (if no preview)
                         pip={true}
-                        playing={true}
+                        playing={!isMobile}
                         muted={true}
                     />
                     {/*<Control />*/}

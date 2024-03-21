@@ -254,7 +254,9 @@ const MobileMainHeader = () => {
     return (
         <section className={`flex flex-col justify-start items-center w-full max-h-screen ${open ? 'overflow-y-auto' : 'overflow-y-hidden'}`}>
             <div className="w-full flex justify-between bg-black px-10 relative">
+                <Link href={"/"}>
                 <Image className='scale-105' src={"/LiiGi.jpg"} alt={'LiiGi_Logo'} title={"LiiGi"} width={80} height={80} quality={100}/>
+                </Link>
                 {!open &&<Image onClick={()=>isOpen(true)} src='/bars-icon.svg' alt='bars-icon' width={30} height={30}/>}
                 {open&&<Image onClick={()=>isOpen(false)} src='/cross-icon.svg' alt='cross-icon' width={30} height={30}/>}
             </div>
@@ -315,10 +317,10 @@ const SubHeader = (props:
             <div className='w-[100px] xl:block lg:block md:hidden sm:hidden'/>
             <div className="overflow-x-auto overflow-y-hidden flex xl:w-fit lg:w-fit xl:justify-evenly lg:justify-evenly md:justify-center sm:justify-start sm:w-full md:w-full items-center pl-4">
                 {props.els?.map((el:{name:string, href:string})=>(
-                    <div className="px-8 sm:text-sm md:text-md lg:text-md xl:text-md cursor-pointer text-center py-5 relative font-sans-['Inter'] group">
-                        <Link href={`#${el.href}`} className='font-medium text-md'>
+                    <div key={el.name} className="px-8 sm:text-sm md:text-md lg:text-md xl:text-md cursor-pointer text-center py-5 relative font-sans-['Inter'] group">
+                        <a href={`#${el.href}`} className='font-medium text-md'>
                             {el.name}
-                        </Link>
+                        </a>
                         <div className="w-full px-5 h-1.5 absolute bottom-[-10%] opacity-0 left-0 duration-[0.2s] bg-primary group-hover:opacity-100 group-hover:bottom-0"/>
                     </div>
                 ))}
