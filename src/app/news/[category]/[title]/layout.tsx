@@ -3,10 +3,9 @@ import { Roboto } from "next/font/google";
 const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 type Props = {
     params: { category: string, title:string }
-    searchParams: { [key: string]: string | string[] | undefined }
 }
 export async function generateMetadata(
-    { params, searchParams }: Props,
+    { params }: Props,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
     // read route params
