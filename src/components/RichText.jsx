@@ -1,12 +1,13 @@
 import { PortableText } from '@portabletext/react';
 import React from 'react';
-import options from "@/utils/blockComponents";
+import { components } from "../utils/blockComponents";
 
-const RichText = ({ content }: { content: any }) => {
+const RichText = ({ content }) => {
+    // @ts-ignore
     return (
         <PortableText
             value={content}
-            components={options}
+            components={components}
         />
     );
 };

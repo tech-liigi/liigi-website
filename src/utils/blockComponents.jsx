@@ -32,7 +32,7 @@ const SampleFileComponent = ({ value }) => {
         </div>
     );
 };
-const components =  {
+export const components =  {
     types: {
         image: SampleImageComponent,
         file: SampleFileComponent
@@ -56,14 +56,13 @@ const components =  {
         }
     },
     block: {
-        h1: ({children}) => <h1 className={`${kanit_bold.className} text-5xl py-2`}>{children}</h1>,
-        h2: ({children}) => <h2 className={`${kanit_bold.className} text-4xl py-2`}>{children}</h2>,
-        h3: ({children}) => <h2 className={`${kanit_bold.className} text-3xl py-2`}>{children}</h2>,
-        h4: ({children}) => <h2 className={`${kanit_bold.className} text-2xl py-2`}>{children}</h2>,
-        h5: ({children}) => <h2 className={`${kanit_bold.className} text-xl py-2`}>{children}</h2>,
-        h6: ({children}) => <h2 className={`${kanit_bold.className} text-lg py-2`}>{children}</h2>,
-        normal: ({children}) => <p className={`py-3 text-md font-medium`}>{children}</p>,
-
+        h1: ({ children }) => <h1 className={`${kanit_bold.className} text-5xl py-2`}>{children}</h1>,
+        h2: ({ children }) => <h2 className={`${kanit_bold.className} text-4xl py-2`}>{children}</h2>,
+        h3: ({ children }) => <h3 className={`${kanit_bold.className} text-3xl py-2`}>{children}</h3>,
+        h4: ({ children }) => <h4 className={`${kanit_bold.className} text-2xl py-2`}>{children}</h4>,
+        h5: ({ children }) => <h5 className={`${kanit_bold.className} text-xl py-2`}>{children}</h5>,
+        h6: ({ children }) => <h6 className={`${kanit_bold.className} text-lg py-2`}>{children}</h6>,
+        normal: ({ children }) => <p className={`py-3 text-md font-medium`}>{children}</p>,
     },
     list: {
         bullet: ({ children }) => <ul className="ulContentList">{children}</ul>,
@@ -73,4 +72,3 @@ const components =  {
         <li className={`${inter.className} pl-5`}>{children}</li>
     ),
 }
-export default components;
