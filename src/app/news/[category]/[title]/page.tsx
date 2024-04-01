@@ -3,6 +3,7 @@ import { rowdies, montserrat, inter } from "@/fonts"
 import Image from "next/image"
 import {toPlainText} from "@portabletext/react"
 import Link from "next/link"
+import { notFound } from 'next/navigation';
 import React from "react";
 import { sanityFetch } from "@/lib/fetch";
 import {
@@ -75,6 +76,9 @@ export default async function Article({params}:{params:{title:string, category:s
             query: categoriesQuery,
         }),
     ]);
+    if(!article){
+        notFound();
+    }
     const shuffledCategories = categories.sort(() => Math.random() - 0.5);
 
     // Slice the first 5 elements (or fewer if the array has less than 5 elements)

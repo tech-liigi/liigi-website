@@ -2,6 +2,7 @@ import { Header, Footer, Player, NewsList, Social } from "@/components"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react";
+import { notFound } from 'next/navigation';
 import { sanityFetch } from "@/lib/fetch";
 import {
     navQuery,
@@ -56,7 +57,9 @@ export default async function VideoPage({params}:{params:{title:string, category
             query: videoQuery,
         }),
     ]);
-
+    if(!video){
+        notFound();
+    }
     const jsonLd = {
         '@context': 'https://liigi.com',
         '@type': 'BlogPosting',

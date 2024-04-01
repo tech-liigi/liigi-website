@@ -6,31 +6,36 @@ type Props = {
 }
 import { sanityFetch } from "@/lib/fetch";
 import {
-   policyQuery, PolicyResponse,
+   policyQuery, PolicyResponse,generalQuery,generalResponse
 } from "@/lib/queries";
+import {urlForImage} from "@/lib/utils";
 export async function generateMetadata(
     { params }: Props,
     parent: ResolvingMetadata
 ): Promise<Metadata> {
     // read route params
-    const [ policy] = await Promise.all([
+    const [ policy, general] = await Promise.all([
         sanityFetch<PolicyResponse>({
             query: policyQuery,
             params:{title:params.title}
         }),
+
+        sanityFetch<generalResponse>({
+            query: generalQuery,
+        }),
     ]);
-    const title = policy.title;
+    const title = policy?.title;
 
     return {
-        title: `LiiGi - ${title}`,
+        title: `${general.title} - ${title}`,
         description: "Our policies information",
         icons: {
-            icon: "/LiiGi.jpg"
+            icon: general?.logo && urlForImage(general.logo)?.url()
         },
         openGraph: {
-            title: `LiiGi - ${title}`,
+            title: `${general.title} - ${title}`,
             description: "Our policies information",
-            images:["/LiiGi.jpg"]
+            images:[`${general?.logo && urlForImage(general.logo)?.url()}`]
         },
     }
 }

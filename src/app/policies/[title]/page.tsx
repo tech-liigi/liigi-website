@@ -12,6 +12,7 @@ import {
     navResponse,policiesQuery,PolicyResponse,
     policyQuery, socialQuery, Sponsor, sponsorsQuery,
 } from "@/lib/queries";
+import {notFound} from "next/navigation";
 
 export default async function Policy({params}:{params:{title:string}}){
     const [nav, clubs, general, sponsors, footer, social, policies, policy] = await Promise.all([
@@ -39,6 +40,9 @@ export default async function Policy({params}:{params:{title:string}}){
             params:{title:params.title}
         }),
     ]);
+    if(!policy){
+        notFound();
+    }
 return (
     <>
         <Header pageId={"policy"} logo={general} clubs={clubs} menuItems={nav} />

@@ -34,12 +34,12 @@ export async function generateMetadata(
         title: `${general.title} Video & ${category.charAt(0).toUpperCase() + category.slice(1, category.length)} & ${title}`,
         description: `For all the latest ${general.title}  news, visit the official website of the ${general.title}.`,
         icons: {
-            icon:  video.video.preview && urlForImage(video.video.preview)?.url()
+            icon:  video?.video?.preview && urlForImage(video.video.preview)?.url() || general.logo && urlForImage(general.logo )?.url()
         },
         openGraph: {
             title: `${general.title} Video & ${category.charAt(0).toUpperCase() + category.slice(1, category.length)} & ${title}`,
             description: `For all the latest ${general.title}  news, visit the official website of the ${general.title} .`,
-            images: [`${video.video.preview && urlForImage(video.video.preview)?.url()}`]
+            images: [`${video?.video?.preview && urlForImage(video.video.preview)?.url()}`] || general.logo && [`${urlForImage(general.logo)?.url()}`]
         },
     }
 }

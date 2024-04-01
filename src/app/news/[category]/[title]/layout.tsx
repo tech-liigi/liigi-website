@@ -1,5 +1,6 @@
 import type { Metadata, ResolvingMetadata  } from "next";
 import { Roboto } from "next/font/google";
+import { notFound } from 'next/navigation';
 import {
     generalResponse,
     generalQuery,
@@ -35,12 +36,12 @@ export async function generateMetadata(
         title: `${general.title} News & ${category.charAt(0).toUpperCase() + category.slice(1, category.length)} & ${title}`,
         description: `For all the latest ${general.title} news, visit the official website of the ${general.title}.`,
         icons: {
-            icon: article.preview && urlForImage(article.preview)?.url()
+            icon: article?.preview && urlForImage(article.preview)?.url() || general.logo && urlForImage(general.logo )?.url()
         },
         openGraph: {
             title: `${general.title} News & ${category.charAt(0).toUpperCase() + category.slice(1, category.length)} & ${title}`,
             description: `For all the latest ${general.title} news, visit the official website of the ${general.title}.`,
-            images: article.preview && [`${urlForImage(article.preview)?.url()}`]
+            images: article?.preview && [`${urlForImage(article.preview)?.url()}`] || general.logo && [`${urlForImage(general.logo)?.url()}`]
         },
     }
 }
