@@ -112,10 +112,10 @@ const TopHeader = ({clubs}:any) =>{
                 {clubs.map((club:any)=>(
                     <div key={club.title}>
                         {club.name === "Ikoyi FC" ?
-                            <a href={club.url || "#"} target={"_blank"} rel={"noopener"}>
+                            <a href={club.link || "#"} target={"_blank"} rel={"noopener"}>
                                 <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={club.image&&urlForImage(club.image)?.url()} alt={`${club.name}_Logo`} title={club.name}  width={45} height={45}/>
                             </a>
-                            :      <a href={club.url || "#"} target={"_blank"} rel={"noopener"}>
+                            :      <a href={club.link || "#"} target={"_blank"} rel={"noopener"}>
                             <Image className="cursor-pointer duration-[0.1s] hover:scale-125" src={club.image&&urlForImage(club.image)?.url()} alt={`${club.name}_Logo`} title={club.name}  width={50} height={50}/>
                         </a>}
                     </div>
