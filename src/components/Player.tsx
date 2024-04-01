@@ -2,7 +2,7 @@
 import ReactPlayer from "react-player";
 import { RotatingLines } from 'react-loader-spinner'
 import {useState,useEffect} from "react";
-const Player = () => {
+const Player = ({url, preview}:any) => {
     const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 950);
     useEffect(() => {
         if(typeof window !== "undefined") {
@@ -15,7 +15,7 @@ const Player = () => {
                 <div className="player__wrapper w-full h-full">
                     <ReactPlayer
                         className="player hover:drop-shadow-2xl duration-[0.2s]"
-                        url="https://streamable.com/0rbor3"
+                        url={url}
                         width="100%"
                         controls
                         height="100%"
@@ -40,7 +40,7 @@ const Player = () => {
                             </defs>
                         </svg>
                         }
-                        light={"/example.jpg"} // if not light mode, the playing is false (if no preview)
+                        light={preview} // if not light mode, the playing is false (if no preview)
                         pip={true}
                         playing={!isMobile}
                         muted={true}

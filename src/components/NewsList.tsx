@@ -1,9 +1,15 @@
 'use client'
-import {inter, kanit, kanit_bold, montserrat, rowdies} from "@/fonts";
+import {inter, kanit, montserrat, rowdies} from "@/fonts";
 import Image from "next/image";
 import { useRef, useEffect, useState } from 'react';
+import VideoMark from "./videoMark"
+import Link from "next/link"
+import {urlForImage} from "@/lib/utils"
 
-const NewsList = ({type}:{type?:string})=> {
+function createSlug(category:string, slug:string, type:string) {
+    return `/${type}/${category.charAt(0).toLowerCase() + category.slice(1, category.length)}/${slug}`;
+}
+const NewsList = ({type, news}:{type?:string, news:any})=> {
     const productListRef = useRef<HTMLDivElement>(null);
     const product = useRef<HTMLDivElement>(null);
     const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -44,128 +50,39 @@ const NewsList = ({type}:{type?:string})=> {
 
     return (
         <section id="news" className="mt-10 product-list-container overflow-auto whitespace-nowrap w-full">
-            <div  className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 w-full lg:gap-4 md:gap-4 sm:gap-0 xl:gap-4">
-                <div className="xl:p-10 lg:p-10 md:p-10 sm:p-5 text-wrap">
-                    <h6 className={`text-sm font-semibold ${rowdies.className} text-primary`}>Tagline</h6>
-                    <h2 className={`group-hover:underline xl:text-5xl md:text-4xl sm:text-3xl lg:text-5xl py-5 font-bold ${kanit_bold.className}`}>Stay Updated with Football News</h2>
-                    <p className={`${montserrat.className} py-3 text-sm`}>Get the latest updates on football matches and league news.</p>
-                </div>
-                <div className="flex sm:justify-start md:justify-end lg:justify-end xl:justify-end items-end xl:mx-10 lg:mx-10 lg:my-10 md:my-10 md:mx-10 sm:mx-0 sm:my-0 xl:my-10">
-                    <button className={`mt-3 ml-5 text-center mb-5 text-black bg-white border-black border-2 outline-none duration-[0.1s] hover:text-white hover:bg-black hover:border-white  text-md font-sans-[${inter.className}] px-6 py-3 rounded-[4px]`}>View All</button>
-                </div>
-            </div>
-            <div  ref={productListRef} id="product-list" className="product-list-container relative overflow-auto whitespace-nowrap w-full py-5">
-
-                <div className="product-list inline-block xl:px-8 lg:px-8 md:px-6 sm:px-0">
-                    <div ref={product} className={` product group max-w-[500px] lg:w-[50%] xl:w-[50%] md:w-[35%] sm:w-[20%] cursor-pointer inline-block px-2 min-w-[320px] `}>
-                        <div className={`square-image-wrapper relative overflow-hidden ${type==='video'?'rounded-[4px]' : 'rounded-none'}`}>
-                            <img alt="product-img" title="Nike Air Force 1'07" src="/example.jpg" className="w-full duration-[0.2s] group-hover:scale-125 md:min-h-[300px] lg:min-h-[300px] xl:min-h-[300px] sm:min-h-[200px] object-cover"/>
-                            {type==='video' && <div className="flex items-center justify-around w-[6%] min-w-[75px] p-0.5 absolute bottom-0 left-0 rounded-bl-[4px] rounded-tr-[4px] bg-primary">
-                                <Image src={"/play-small-icon.svg"} alt={'play-icon'} width={30} height={30}/>
-                                <p className={`text-md pr-1 text-white ${rowdies.className}`}>01:35</p>
-                            </div>}
-                        </div>
-                        <div className="text-wrap">
-                            <div className="flex items-center mt-4">
-                                <div className="bg-primary w-fit px-3 py-1.5">
-                                    <h6 className={`text-sm text-white font-bold ${rowdies.className}`}>All</h6>
+            <div  ref={productListRef} id="product-list" className="product-list-container  relative overflow-auto whitespace-nowrap w-full py-5">
+                <div className="product-list  inline-flex w-full xl:px-8 lg:px-8 md:px-6 sm:px-0 ">
+                {news.map((newsItem:any) =>(
+                        <div key={newsItem._id} ref={product} className={`product group max-w-[500px] lg:w-[50%] xl:w-[50%] md:w-[35%] sm:w-[20%] cursor-pointer inline-block px-2 sm:min-w-[320px] md:min-w-[420px] lg:min-w-[420px] xl:min-w-[420px] `}>
+                            <Link href={createSlug(newsItem.category.title, newsItem.slug.current, newsItem._type)}>
+                             <div className={`square-image-wrapper relative overflow-hidden ${type==='video'?'rounded-[4px]' : 'rounded-none'}`}>
+                                <img alt={newsItem.title} title={newsItem.title} src={newsItem._type === "video" ?  newsItem.video.preview && urlForImage(newsItem.video.preview)?.url(): newsItem.preview && urlForImage(newsItem.preview)?.url() } className="w-full duration-[0.2s] group-hover:scale-125 md:min-h-[300px] lg:min-h-[300px] xl:min-h-[300px] sm:min-h-[200px] object-cover"/>
+                                {type==='video' && <VideoMark url={newsItem.video.url}/>}
+                             </div>
+                            </Link>
+                            <div className="text-wrap">
+                                <div className="flex items-center mt-4">
+                                    <div className="bg-primary w-fit px-3 py-1.5">
+                                        <h6 className={`text-sm text-white font-bold ${rowdies.className}`}>{newsItem.category.title}</h6>
+                                    </div>
+                                    <p className={`font-medium  text-sm text-center ml-3 ${rowdies.className}`}>16 Mar 2024</p>
                                 </div>
-                                <p className={`font-medium  text-sm text-center ml-3 ${rowdies.className}`}>16 Mar 2024</p>
+                                <Link href={createSlug(newsItem.category.title, newsItem.slug.current, newsItem._type)}>
+                                <h3 className={`text-lg group-hover:underline font-bold py-2 ${kanit.className}`}>
+                                    {newsItem.title}
+                                </h3>
+                                </Link>
+                                {type !== 'video' && <> <p className={`text-md font-medium ${montserrat.className}`}>
+                                    {newsItem.shortDescription}
+                                </p>
+                                    <Link href={createSlug(newsItem.category.title, newsItem.slug.current, newsItem._type)}>
+                                    <button className={`my-4 duration-[0.1s] flex items-center text-md ${inter.className}`}>
+                                        Read More
+                                        <Image className={'ml-3 -rotate-90 group-hover:ml-4 duration-[0.1s]'} src={'/black-arrow-down.svg'} alt={'arrow-down'} width={15} height={15}/>
+                                    </button></Link></>}
                             </div>
-                            <h3 className={`text-lg group-hover:underline font-bold py-2 ${kanit.className}`}>
-                                Exciting Match Ends in Thrilling Draw
-                            </h3>
-                            {type !== 'video' && <> <p className={`text-md font-medium ${montserrat.className}`}>
-                                Read about the intense battle between two top teams and the dramatic ending.
-                            </p>
-                                <button className={`my-4 duration-[0.1s] flex items-center text-md ${inter.className}`}>
-                                    Read More
-                                    <Image className={'ml-3 -rotate-90 group-hover:ml-4 duration-[0.1s]'} src={'/black-arrow-down.svg'} alt={'arrow-down'} width={15} height={15}/>
-                                </button></>}
-
                         </div>
-                    </div>   <div ref={product} className="product group max-w-[500px] lg:w-[50%] xl:w-[50%] md:w-[35%] sm:w-[20%] cursor-pointer inline-block px-2 min-w-[320px]">
-                    <div className="square-image-wrapper relative overflow-hidden">
-                        <img alt="product-img" title="Nike Air Force 1'07" src="/example.jpg" className="w-full duration-[0.2s] group-hover:scale-125 md:min-h-[300px] lg:min-h-[300px] xl:min-h-[300px] sm:min-h-[200px] object-cover"/>
-                        {type==='video' && <div className="flex items-center justify-around w-[6%] min-w-[75px] p-0.5 absolute bottom-0 left-0 rounded-bl-[4px] rounded-tr-[4px] bg-primary">
-                            <Image src={"/play-small-icon.svg"} alt={'play-icon'} width={30} height={30}/>
-                            <p className={`text-md pr-1 text-white ${rowdies.className}`}>01:35</p>
-                        </div>}
-                    </div>
-                    <div className="text-wrap">
-                        <div className="flex items-center mt-4">
-                            <div className="bg-primary w-fit px-3 py-1.5">
-                                <h6 className={`text-sm text-white font-bold ${rowdies.className}`}>All</h6>
-                            </div>
-                            <p className={`font-medium  text-sm text-center ml-3 ${rowdies.className}`}>16 Mar 2024</p>
-                        </div>
-                        <h3 className={`text-lg group-hover:underline font-bold py-2 ${kanit.className}`}>
-                            Exciting Match Ends in Thrilling Draw
-                        </h3>
-                        {type !== 'video' && <> <p className={`text-md font-medium ${montserrat.className}`}>
-                            Read about the intense battle between two top teams and the dramatic ending.
-                        </p>
-                            <button className={`my-4 duration-[0.1s] flex items-center text-md ${inter.className}`}>
-                                Read More
-                                <Image className={'ml-3 -rotate-90 group-hover:ml-4 duration-[0.1s]'} src={'/black-arrow-down.svg'} alt={'arrow-down'} width={15} height={15}/>
-                            </button></>}
-
-                    </div>
-                </div>   <div ref={product} className="product group max-w-[500px] lg:w-[50%] xl:w-[50%] md:w-[35%] sm:w-[20%] cursor-pointer inline-block px-2 min-w-[320px]">
-                    <div className="square-image-wrapper relative overflow-hidden">
-                        <img alt="product-img" title="Nike Air Force 1'07" src="/example.jpg" className="w-full duration-[0.2s] group-hover:scale-125 md:min-h-[300px] lg:min-h-[300px] xl:min-h-[300px] sm:min-h-[200px] object-cover"/>
-                        {type==='video' && <div className="flex items-center justify-around w-[6%] min-w-[75px] p-0.5 absolute bottom-0 left-0 rounded-bl-[4px] rounded-tr-[4px] bg-primary">
-                            <Image src={"/play-small-icon.svg"} alt={'play-icon'} width={30} height={30}/>
-                            <p className={`text-md pr-1 text-white ${rowdies.className}`}>01:35</p>
-                        </div>}
-                    </div>
-                    <div className="text-wrap">
-                        <div className="flex items-center mt-4">
-                            <div className="bg-primary w-fit px-3 py-1.5">
-                                <h6 className={`text-sm text-white font-bold ${rowdies.className}`}>All</h6>
-                            </div>
-                            <p className={`font-medium  text-sm text-center ml-3 ${rowdies.className}`}>16 Mar 2024</p>
-                        </div>
-                        <h3 className={`text-lg group-hover:underline font-bold py-2 ${kanit.className}`}>
-                            Exciting Match Ends in Thrilling Draw
-                        </h3>
-                        {type !== 'video' && <> <p className={`text-md font-medium ${montserrat.className}`}>
-                            Read about the intense battle between two top teams and the dramatic ending.
-                        </p>
-                            <button className={`my-4 duration-[0.1s] flex items-center text-md ${inter.className}`}>
-                                Read More
-                                <Image className={'ml-3 -rotate-90 group-hover:ml-4 duration-[0.1s]'} src={'/black-arrow-down.svg'} alt={'arrow-down'} width={15} height={15}/>
-                            </button></>}
-
-                    </div>
-                </div>   <div ref={product} className="product group max-w-[500px] lg:w-[50%] xl:w-[50%] md:w-[35%] sm:w-[20%] cursor-pointer inline-block px-2 min-w-[320px]">
-                    <div className="square-image-wrapper relative overflow-hidden">
-                        <img alt="product-img" title="Nike Air Force 1'07" src="/example.jpg" className="w-full duration-[0.2s] group-hover:scale-125 md:min-h-[300px] lg:min-h-[300px] xl:min-h-[300px] sm:min-h-[200px] object-cover"/>
-                        {type==='video' && <div className="flex items-center justify-around w-[6%] min-w-[75px] p-0.5 absolute bottom-0 left-0 rounded-bl-[4px] rounded-tr-[4px] bg-primary">
-                            <Image src={"/play-small-icon.svg"} alt={'play-icon'} width={30} height={30}/>
-                            <p className={`text-md pr-1 text-white ${rowdies.className}`}>01:35</p>
-                        </div>}
-                    </div>
-                    <div className="text-wrap">
-                        <div className="flex items-center mt-4">
-                            <div className="bg-primary w-fit px-3 py-1.5">
-                                <h6 className={`text-sm text-white font-bold ${rowdies.className}`}>All</h6>
-                            </div>
-                            <p className={`font-medium  text-sm text-center ml-3 ${rowdies.className}`}>16 Mar 2024</p>
-                        </div>
-                        <h3 className={`text-lg group-hover:underline font-bold py-2 ${kanit.className}`}>
-                            Exciting Match Ends in Thrilling Draw
-                        </h3>
-                        {type !== 'video' && <> <p className={`text-md font-medium ${montserrat.className}`}>
-                            Read about the intense battle between two top teams and the dramatic ending.
-                        </p>
-                            <button className={`my-4 duration-[0.1s] flex items-center text-md ${inter.className}`}>
-                                Read More
-                                <Image className={'ml-3 -rotate-90 group-hover:ml-4 duration-[0.1s]'} src={'/black-arrow-down.svg'} alt={'arrow-down'} width={15} height={15}/>
-                            </button></>}
-                    </div>
-                </div>
-
+                ))}
                 </div>
             </div>
             <div className="w-full max-[1024px]:hidden justify-end items-center flex pr-[3%] mt-[2%]">

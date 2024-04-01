@@ -4,7 +4,7 @@ import {Rings} from "react-loader-spinner";
 
 const Loader = ()=>{
     return (
-        <div className="w-full h-full absolute top-0 left-0.5 bg-white z-10 flex justify-center items-center">
+        <div className="w-[99%] mx-auto h-full absolute top-0 left-0.5 bg-white z-10 flex justify-center items-center">
             <Rings
                 visible={true}
                 height="80"

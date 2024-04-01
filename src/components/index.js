@@ -5,6 +5,8 @@ import Footer from "./Footer"
 import Player from "./Player"
 import Social from "./Social"
 import Loader from "./Loader"
+import VideoMark from "./VideoMark"
+import RichText from "./RichText"
 import {TracingBeam} from "./TracingBeam"
 export  {
     Header,
@@ -14,5 +16,7 @@ export  {
     Player,
     Social,
     Loader,
-    TracingBeam
+    TracingBeam,
+    VideoMark,
+    RichText
 }
